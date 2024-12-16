@@ -6,19 +6,25 @@
                 <img src="../../assets/logo.png" alt="">
             </div> 
             <!-- 登录表单区域 -->
-            <el-form  label-width="0px" class="login_form">
-                <el-form-item>
-                    <el-input prefix-icon="el-icon-user">
+            <el-form  label-width="0px" class="login_form"
+            :model="loginForm" :rules="loginFormRules" ref="loginFormRef">
+                <el-form-item prop="username">
+                    <el-input v-model="loginForm.username" 
+                    prefix-icon="el-icon-user" placeholder="请输入用户名"
+                    >
                     </el-input>
                 </el-form-item>
-                <el-form-item>
-                    <el-input></el-input>
+                <el-form-item prop="password">
+                    <el-input v-model="loginForm.password"  type="password"
+                    prefix-icon="iconfont icon-showpassword"
+                    placeholder="请输入密码"
+                    ></el-input>
                 </el-form-item>
                 <!-- 按钮区域 -->
                 <el-form-item class="btns">
                     <el-button type="primary">登录</el-button>
                     <el-button type="primary">注册</el-button>
-                    <el-button type="info">重置</el-button>
+                    <el-button type="info" @click="resetLoginForm">重置</el-button>
                 </el-form-item>
             </el-form>     
         </div>
@@ -28,6 +34,32 @@
 <script>
 export default {
   name: "LoginVue",
+  data() {
+    return{
+      // 登录表单的数据绑定对象
+       loginForm: {
+          username:'',
+          password:''
+       },
+      // 校验规则
+      loginFormRules: {
+         username: [
+           {required: true, message: "请输入登录名称", trigger:"blur"},
+           { min: 5, max: 10, message:"长度在5-10个字符", trigger: "blur"}
+         ],
+         password: [
+          {required: true, message: "请输入密码", trigger:"blur"},
+          { min: 5, max: 10, message:"长度在5-10个字符", trigger: "blur"}
+         ]
+      }
+    }
+  },
+  methods: {
+     //重置登录表单数据
+     resetLoginForm() {
+       
+     }
+  }
 };
 </script>
 
