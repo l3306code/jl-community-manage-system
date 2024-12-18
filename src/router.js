@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import LoginVue from '@/views/user/login.vue'
 import HomeVue from '@/views/Home.vue'
+import axios from 'axios'
 Vue.use(Router)
 
 
@@ -33,6 +34,7 @@ router.beforeEach(
         if(tokenStr == null){
             return next('/login')
         }else{
+            axios.defaults.headers.common['Authorization'] = `Bearer ${tokenStr}`;
             next()
         }
         
