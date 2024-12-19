@@ -74,15 +74,12 @@ export default {
                 this.$router.push("/home")
              }else{
                 this.$message.error(res.msg)
-             }
-          
-             
+             }   
           }
         )
      },
      register(){
        console.log("注册功能开发中,暂未完成...");
-       
      }
   }
 };
