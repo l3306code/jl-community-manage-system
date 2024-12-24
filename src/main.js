@@ -10,10 +10,20 @@ import '@/assets/css/global.css'
 
 //导入字体图标
 import '@/assets/fonts/iconfont.css'
+
+axios.defaults.baseURL = 'http://tech-zjl:8766/api/v1/';
+// axios.defaults.baseURL = '/api';
+axios.interceptors.request.use(config => {
+  config.headers.Authorization = window.sessionStorage.getItem('token');  
+
+  return config;
+    
+});
+
 Vue.prototype.$http = axios
 
 //配置请求的根路径
-axios.defaults.baseURL = 'http://tech-zjl:8766/api/v1/'
+
 
 Vue.use(ElementUI)
 

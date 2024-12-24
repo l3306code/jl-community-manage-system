@@ -5,5 +5,16 @@ module.exports = defineConfig({
     port: 4277,
     host:'0.0.0.0',
     allowedHosts: 'all'
-  }
+   /*  proxy: {
+      "/api": {
+        target: "http://tech-zjl:8766",
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          '^/api': '/api/v1' 
+        }
+      }
+    } */
+  },
+ 
 })

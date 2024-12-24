@@ -71,7 +71,7 @@ export default {
                 this.$message.success(res.msg)
                 //存入token
                 window.sessionStorage.setItem("token", res.data.token)
-                this.$router.push("/home")
+                this.$router.push("/home");
              }else{
                 this.$message.error(res.msg)
              }   
